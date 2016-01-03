@@ -27,3 +27,9 @@ rm - delete file
 help - get help
 
 # 1.4 Forking and Cloning Reflection  
+
+I would first give a quick summary about what creating, forking, and cloning were, then I would proceed to explain each in detail. Finally, I would add the proper syntax to get the new person to get started.
+
+I would fork a repository instead of creating a new one when I wanted to work with an already existing repository that I did not have access to change, thus keeping my code separate.
+
+I previously had GitHub account and did not have any trouble setting it up. However, I did have some issues setting up my environment in Windows, so I began using Cloud9 and did not meet any issues in setting up my workspace.
