@@ -1,4 +1,4 @@
-![Alt text](site-map.png "LY Personal Website Site Map")
+![Alt text](/imgs/site-map.png "LY Personal Website Site Map")
 
 What are the 6 Phases of Web Design?
 
