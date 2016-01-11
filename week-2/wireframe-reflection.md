@@ -1,5 +1,5 @@
-![Alt text](/imgs/wireframe-index.png "LY Personal Website Wireframe")
-![Alt text](/imgs/wireframe-blog-index.png "LY Personal Website Blog Wireframe")
+![Alt text](/week-2/imgs/wireframe-index.png "LY Personal Website Wireframe")
+![Alt text](/week-2/imgs/wireframe-blog-index.png "LY Personal Website Blog Wireframe")
 
 What is a wireframe?
 
