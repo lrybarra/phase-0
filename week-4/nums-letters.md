@@ -55,3 +55,11 @@ What are local variables? Why and when would you use them?
 How was this challenge? Did you get a good review of some of the basics?
 
 	That's exactly how I would describe it. A quick review of basic computer programming concepts.
+
+Links:
+
+https://github.com/lrybarra/phase-0/blob/master/week-4/basic-math.rb
+
+https://github.com/lrybarra/phase-0/blob/master/week-4/defining-variables.rb
+
+https://github.com/lrybarra/phase-0/blob/master/week-4/simple-string.rb
