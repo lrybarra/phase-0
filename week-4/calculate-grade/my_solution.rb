@@ -1,6 +1,6 @@
 # Calculate a Grade
 
-# I worked on this challenge [with Luis Ybarra].
+# I worked on this challenge [with Ryan Nebuda].
 
 
 # Your Solution Below
