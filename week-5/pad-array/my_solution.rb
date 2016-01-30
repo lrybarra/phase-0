@@ -1,8 +1,8 @@
 # Pad an Array
 
-# I worked on this challenge [by myself, with: Louis]
+# I worked on this challenge with Ben Giamarino
 
-# I spent [] hours on this challenge.
+# I spent 2 hours on this challenge.
 
 
 # Complete each step below according to the challenge directions and
