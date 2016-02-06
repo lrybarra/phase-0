@@ -1,6 +1,6 @@
 # A Nested Array to Model a Bingo Board SOLO CHALLENGE
 
-# I spent [#] hours on this challenge.
+# I spent 8 hours on this challenge.
 
 
 # Release 0: Pseudocode
@@ -169,25 +169,48 @@ class BingoBoard
   end
 
   def legal_board
-    #@bingo_board = Array.new(4, Array.new(4))
-    # not working correctly (doesn't account for duplicates)
+    arrayB = Array(1..15).sample(5)
+    arrayI = Array(16..30).sample(5)
+    arrayN = Array(31..45).sample(5)
+    arrayG = Array(46..60).sample(5)
+    arrayO = Array(61..75).sample(5)
+
     for i in 0..4
       for j in 0..4
         case j
-          when 0 
-            @bingo_board[i][j] = rand(15) + 1
+          when 0
+            @bingo_board[i][j] = arrayB[i]
           when 1
-            @bingo_board[i][j] = rand(15) + 16
+            @bingo_board[i][j] = arrayI[i]
           when 2
-            @bingo_board[i][j] = rand(15) + 31
+            @bingo_board[i][j] = arrayN[i]
           when 3
-            @bingo_board[i][j] = rand(15) + 46
-          else
-            @bingo_board[i][j] = rand(15) + 61
+            @bingo_board[i][j] = arrayG[i]
+          else 
+            @bingo_board[i][j] = arrayO[i]
         end
       end
     end
+    # Free Space, yo
     @bingo_board[2][2] = ' X'
+  end
+
+  def legal_call
+    letter = @letters.sample
+    case letter
+      when :B 
+        number = rand(15) + 1
+      when :I 
+        number = rand(15) + 16
+      when :N 
+        number = rand(15) + 31
+      when :G 
+        number = rand(15) + 46
+      else
+        number = rand(15) + 61
+    end
+    puts letter.to_s + number.to_s
+    check(@letters.index(letter), number)
   end
 
   def call
@@ -246,6 +269,8 @@ until game_over
   puts "2. Call"
   puts "3. Display Column"
   puts "4. Exit"
+  puts "5. Create Legal Board"
+  puts "6. Legal Call"
   print "Enter Selection: "
   user_action = gets.chomp.to_i
   case user_action
@@ -262,9 +287,50 @@ until game_over
       game_over = true
     when 5
       new_game.legal_board
+    when 6
+      new_game.legal_call
   end
 end
 
-
 #Reflection
+=begin
+
+How difficult was pseudocoding this challenge? What do you think of your pseudocoding style?
+
+> It was not difficult to pseudocode for this challenge, I think my style is improving and it 
+  definitely gives me a good starting point for coding. Even if the final product is different from
+  the pseudocode steps, I feel that it is beneficial. 
+
+What are the benefits of using a class for this challenge?
+
+> The two biggest benefits are having methods that will do the same thing over and over again,
+  such as generating a "call" or displaying the board. By having the board numbers as class attributes,
+  we are able to easily check for matches.
+
+How can you access coordinates in a nested array?
+
+> nested_array[i][j] - i selects the array, j selects the element of the selected array
+
+What methods did you use to access and modify the array?
+
+> brackets and equals signs
+
+Give an example of a new method you learned while reviewing the Ruby docs. Based on what you see in the docs, what purpose does it serve, and how is it called?
+
+> Array#sample(n) - returns n random elements from an array
+
+How did you determine what should be an instance variable versus a local variable?
+
+> Anything related to the actual board was an instance variable and simple rows and columns were able
+  to be local variables.
+
+What do you feel is most improved in your refactored solution?
+
+> The check method which I reduced to three lines. Also, I was able to generate a legal Bingo board and 
+  generate "legal" calls.
+
+=end
+
+
+
 
