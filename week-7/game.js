@@ -3,11 +3,11 @@
 // This is a solo challenge
 
 // Your mission description:
-// Overall mission: Get to the Basketball Playoffs
+// Overall mission: Make the Playoffs
 // Goals: Win 3 out of 5 Games
-// Characters: Shooting Guard, Power Forward, 
-// Objects: Jersey Number, Shooting Ability, Defense Ability, Shoes, Stamina
-// Functions: Score Points, Defend, New Shoes, Increase / Decrease Stamina
+// Characters: Guard, Forward, Backup  
+// Objects: Team, Player
+// Functions: Points, 
 
 // Pseudocode
 // Colors
@@ -34,65 +34,78 @@ var bg_yellow = "\x1b[43m";
 var bg_blue = "\x1b[44m";
 var bg_magenta = "\x1b[45m";
 // Code Begin
-function team(name, g, f, bck, color, level){
+function team(name, g, f, bck, color){
 	this.name = name; 
 	this.g = g; 
 	this.f = f; 
 	this.bck = bck; 
 	this.games = 0;
 	this.color = color;
-	this.level = level;
 	this.w = 0;
 	this.l = 0;
-	this.g_pts = 0;
-	this.f_pts = 0;
 	this.pts = 0;
 	this.o_pts = 0;
 	this.printRoster = function(){
-		console.log(this.color,"ROSTER:", "#23", this.g, "&& #33", this.f, "&& #91", this.bck, "\n");
+		console.log(this.color,"ROSTER:", this.g.j_no, this.g.name, "&&", this.f.j_no, this.f.name, "&&", this.bck.j_no, this.bck.name, "\n");
 	};
 };
 
 function player(name, pos, j_no, off, def) {
 	this.name = name;
 	this.pos = pos;
-	this.j_no = j_no;
+	this.j_no = "#" + j_no;
 	this.off = off;
 	this.def = def;
 	this.injured = false;
+	this.pts = 0;
+};
+// pass in array with off and def levels
+// return array with points (4 elements)
+var score = function(p1, p2, p3, p4){
+    var score = [0,0,0,0];
+    var off_mtrx = [p1.off, p2.off, p3.off, p4.off];
+    var def_mtrx = [p3.def, p4.def, p1.def, p2.def];
+    for (i in score){
+    	score[i] = Math.floor (((Math.random() * off_mtrx[i]) + 1) - ((Math.random() * def_mtrx[i]) + 1));
+    	if (score[i] < 0)
+    		score[i] = 1;	
+    }
+	return score;
 };
 
 var playGame = function(team1, team2){
-	var score1 = [0,0];
-	var score2 = [0,0];
-	for (i in score1)
-	  score1[i] = Math.floor((Math.random() * (team1.level/2)) + 1);
-	for (i in score2)
-	  score2[i] = Math.floor((Math.random() * (team2.level/2)) + 1);
+	pts = score(team1.g, team1.f, team2.g, team2.f);
     
 	console.log(team2.color, team1.games + 1, "\bth game vs.", team2.name);
-	console.log(team1.color, team1.g, "scores", score1[0], "points &", team1.f, "scores", score1[1], "points. ");
-	console.log(team2.color, team2.g, "scores", score2[0], "points &", team2.f, "scores", score2[1], "points. ");
+	console.log(team1.color, team1.g.j_no, team1.g.name, "scores", pts[0], "points &", team1.f.j_no, team1.f.name, "scores", pts[1], "points. ");
+	console.log(team2.color, team2.g.j_no, team2.g.name, "scores", pts[2], "points &", team2.f.j_no, team2.f.name, "scores", pts[3], "points. ");
 	//console.log(white, "\b------------------------------------------------");
-	if ((score1[0] + score1[1]) > (score2[0] + score2[1])) {
+	p_pts = pts[0] + pts[1];
+ 	o_pts = pts[2] + pts[3];
+	if (p_pts > o_pts) {
 		team1.w += 1;
-		console.log(fg_white,"\b-----", team1.name, "win:", score1[0] + score1[1], "to", score2[0] + score2[1], "-----\n");
+		console.log(fg_white,"\b-----", team1.name, "win:", p_pts, "to", o_pts, "-----\n");
+	}
+	else if (p_pts == o_pts){ // Added after Houston "won" a tie.
+		p_pts += 1;
+		pts[0] += 1;
+		console.log(fg_white,"\b-----", team1.name, "win:", p_pts, "to", o_pts, "IN OVERTIME!-----\n");
 	}
 	else {
 		team1.l += 1;
-		console.log(fg_white, "\b-----", team2.name, "win:", score2[0] + score2[1], "to", score1[0] + score1[1], "-----\n");
+		console.log(fg_white, "\b-----", team2.name, "win:", o_pts, "to", p_pts, "-----\n");
 	}
 	team1.games += 1;
-	team1.g_pts += score1[0];
-	team1.f_pts += score1[1];
-	team1.pts += (score1[0] + score1[1]);
-	team1.o_pts += (score2[0] + score2[1]);
+	team1.g.pts += pts[0];
+	team1.f.pts += pts[1];
+	team1.pts += p_pts;
+	team1.o_pts += o_pts;
 };
 
 var statistics = function(team){
 	//console.log(team.color, "###################################################");
-	console.log(team.color, "#####", "\x1b[97m", "After", team.games, "games", team.name, "has a record of", team.w, "-", team.l, team.color, "#####");
-	console.log("\x1b[97m", team.g, "averages", Math.round(team.g_pts / team.games), "ppg &", team.f, "averages", Math.round(team.f_pts / team.games), "ppg.");
+	console.log(team.color, "#####", fg_lightwhite, "After", team.games, "games", team.name, "has a record of", team.w, "-", team.l, team.color, "#####");
+	console.log(fg_lightwhite, team.g.name, "averages", Math.round(team.g.pts / team.games), "ppg &", team.f.name, "averages", Math.round(team.f.pts / team.games), "ppg.");
 	console.log(" Scoring", Math.round(team.pts / team.games), "points per game & Allowing", Math.round(team.o_pts / team.games), "points per game\n");
     //console.log(team.color, "###################################################\n");
 };
@@ -103,8 +116,8 @@ var injury = function(team){
 	console.log("\x1b[35m", "++", team.g, "suffered a", injuries[injur], "and will be replaced by", team.bck, "++");
 	team.IR = team.g;
 	team.g = team.bck;
-	team.bck = "Null I. Undefined";
-	console.log(" ++ Team has signed journeyman", team.bck, "to a temporary contract ++");
+	team.bck = new player("Null I. Undefined", null, NaN, 0, 0);
+	console.log(" ++ Team has signed journeyman", team.bck.name, "to a temporary contract ++");
 };
 
 var line_123456789 = function(){
@@ -143,20 +156,24 @@ var m_zie = new player("Maciej Zieliński", 9, 4444, 4444);
 var a_gie = new player("A. Giedraitis", 25, 4444, 4444);
 var bird = new player("Larry Bird", 33, 597, 597);
 var dr_j = new player("Julius Irving", 6, 597, 597);
+var k_pass = new player("A. Jaswinski", 55, 597, 597);
+var air = new player("Integer Jordan", "Guard", 23, 25, 10);
+var pip = new player("String Pippen", "Forward", 33, 25, 10);
+var rod = new player("Boolean Rodman", "Forward", 91, 10, 91);
 // Create Teams
-var my_team = new team("Chicago Script-a-Bulls", "Integer Jordan", "String Pippen", "Boolean Rodman", fg_red, 82);
-var heat = new team("Miami JavaHeat", "D. Wade", "C. Bosh", "", fg_yellow, 50);
-var rckt = new team("Houston JavaRockets", "J. Harden", "D. Howard", "", fg_lightred, 46);
-var mvrk = new team("Dallas Javericks", "D. Williams", "D. Nowitzki", "", fg_lightcyan, 56);
-var spur = new team("San Antonio JavaSpurs", "K. Leonard", "T. Duncan", "", fg_lightgray, 60);
-var suns = new team("Phoenix Sun Java", "E. Bledsoe", "T. Chandler", "", fg_magenta, 52);
-var pstn = new team("Detroit JavaPistons", "R. Jackson", "A. Drummond", "", fg_lightblue, 56);
-var cvlr = new team("Cleveland Javaliers", "K. Irving", "King James", "", fg_lightyellow, 59);
-var pace = new team("Indiana JavaPacers", "M. Ellis", "P. George", "", fg_yellow, 64);
-var mgic = new team("Orlando JavaMagic", "V. Oladipo", "N. Vučević", "", fg_cyan, 69);
-var knck = new team("New York Scripts", "Melo", "R. Lopez", "", fg_blue, 21);
-var pole = new team("Śląsk Wrocław", "C. O'Bannon", "Maciej Zieliński", "A. Giedraitis", fg_green, 8888);
-var great1 = new team("All-Time Greats", "Larry Bird", "Julius Irving", "A. Jaswinski", fg_white, 597);
+var my_team = new team("Chicago Script-a-Bulls", air, pip, rod, fg_red);
+var heat = new team("Miami JavaHeat", d_wad, c_bos, "", fg_yellow);
+var rckt = new team("Houston JavaRockets", j_har, d_how, "", fg_lightred);
+var mvrk = new team("Dallas Javericks", d_wil, d_now, "", fg_lightcyan);
+var spur = new team("San Antonio JavaSpurs", k_leo, t_dun, "", fg_lightgray);
+var suns = new team("Phoenix Sun Java", e_ble, t_cha, "", fg_magenta);
+var pstn = new team("Detroit JavaPistons", r_jac, a_dru, "", fg_lightblue);
+var cvlr = new team("Cleveland Javaliers", k_irv, king, "", fg_lightyellow);
+var pace = new team("Indiana JavaPacers", m_ell, p_geo, "", fg_yellow);
+var mgic = new team("Orlando JavaMagic", v_ola, n_vuc, "", fg_cyan);
+var knck = new team("New York Scripts", melo, r_lop, "", fg_blue);
+var pole = new team("Śląsk Wrocław", c_oba, m_zie, a_gie, fg_green);
+var great1 = new team("All-Time Greats", bird, dr_j, k_pass, fg_white);
 console.log("*****  JavaScript Basketball League  *****");
 my_team.printRoster();
 playGame(my_team, heat);
