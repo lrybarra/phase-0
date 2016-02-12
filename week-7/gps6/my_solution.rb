@@ -47,7 +47,6 @@ class VirusPredictor
     end
     number_of_deaths = (@population * factor).floor
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-
   end
 # The higher the density of the larger the faster spread of the virus.
   def speed_of_spread #in months
@@ -67,9 +66,7 @@ class VirusPredictor
     end
 
     puts " and will spread across the state in #{speed} months.\n\n"
-
   end
-
 end
 
 
@@ -77,3 +74,35 @@ STATE_DATA.each_pair do |key, value|
   state = VirusPredictor.new(key, value[:population_density], value[:population])
   state.virus_effects
 end
+
+=begin 
+What are the differences between the two different hash syntaxes shown in the state_data file?
+
+> Outer hash uses Rocket notation and Inner hash uses symbol notation.
+  Outer hash keys are strings, Inner hash keys are symbols
+
+What does require_relative do? How is it different from require?
+
+> require_relative followed by a filename in quotation marks will allow the program to utilize 
+# written code from specified file. 
+# 
+# require_relative and require perform similarly, however require suffers from a problem (shared by load
+# and auto_load).
+#
+# require_relative is used when the location of the file we're loading is relative to the 
+# file we're loading it from - they're both in the same directory.
+
+What are some ways to iterate through a hash?
+
+> The each method, the each_pair method are two ways to do this.
+
+When refactoring virus_effects, what stood out to you about the variables, if anything?
+
+> speed didn't need to be declared and then incremented. We created factor in the predicted_deaths method. Local and global
+  variables are used in the methods.
+
+What concept did you most solidify in this challenge?  
+
+> Variable scope, new methods, including additional files, control flow, refactoring
+
+=end
