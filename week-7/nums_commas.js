@@ -1,10 +1,7 @@
 // Separate Numbers with Commas in JavaScript **Pairing Challenge**
-
-
 // I worked on this challenge with: Norberto Caceres
 
 // Pseudocode
-
 // INPUT: Integer - Number
 // OUTPUT: String representation of the Integer INPUT with commas added
 // STEPS: 
@@ -13,8 +10,6 @@
 //   3. Add a comma after every set of three digits
 //   4. Reverse the String
 //   5. Return the String.
-
-
 
 // Initial Solution
 function separate_initial(num) {
@@ -38,7 +33,6 @@ function separate_comma(num){
 
 separate_comma(23423423452)
 
-
 // var example 
 // Your Own Tests (OPTIONAL)
 function assert(test, message, test_number) {
@@ -50,7 +44,6 @@ function assert(test, message, test_number) {
   return true;
 }
 
-
 assert(
   (separate_comma(23423423452) === 23,423,423,452),
   "The value of adam should be an Object.",
@@ -58,3 +51,25 @@ assert(
 )
 
 // Reflection
+/*
+What was it like to approach the problem from the perspective of JavaScript? Did you approach the problem differently?
+
+> I approached the problem differently so I really didn't even consider my old solution. I focused on coding in JavaScript 
+  and didn't think about anything else.
+
+What did you learn about iterating over arrays in JavaScript?
+
+> We kept iterating until the counter reached the length of the array.
+
+What was different about solving this problem in JavaScript?
+
+> Different coding language.
+
+What built-in methods did you find to incorporate in your refactored solution?
+
+> toLocaleString();
+ */
+
+
+
+
