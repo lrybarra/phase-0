@@ -11,7 +11,7 @@
 // Functions: Points, 
 
 // Pseudocode
-// Colors
+/****************************  Colors  ****************************/
 var fg_white = "\x1b[37m";
 var fg_black = "\x1b[30m";
 var fg_red = "\x1b[31m";
@@ -36,7 +36,7 @@ var bg_blue = "\x1b[44m";
 var bg_magenta = "\x1b[45m";
 var bg_white = "\x1b[47m";
 var bg_lightblue = "\x1b[104m";
-// Code Begin
+/****************************  Game Functions  ****************************/
 function team(name, g, f, bck, color){
 	this.name = name; 
 	this.g = g; 
@@ -62,6 +62,12 @@ function player(name, pos, j_no, off, def) {
 	this.injured = false;
 	this.pts = 0;
 	this.games = 0;
+	this.avg = function(){
+		if (games != 0)
+			return Math.round(this.pts/this.games);
+		else
+			return 0;
+	};
 };
 // pass in array with off and def levels
 // return array with points (4 elements)
