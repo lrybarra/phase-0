@@ -224,16 +224,17 @@ var pace = new team("Indiana JavaPacers", m_ell, p_geo, "", fg_yellow);
 var mgic = new team("Orlando JavaMagic", v_ola, n_vuc, "", fg_cyan);
 var knck = new team("New York Scripts", melo, r_lop, "", fg_blue);
 var pole = new team("Śląsk Wrocław", c_oba, m_zie, a_gie, fg_green);
-var JS = new team("Java Scripters", b_eic, l_yba, "", fg_lightgreen);
+var JS = new team("Java Scripters", b_eic, l_yba, k_pass, fg_lightgreen);
 var great1 = new team("All-Time Greats (597 wins 0 losses)", bird, dr_j, k_pass, fg_white);
+var bulls = new team("Chicago Script-a-Bulls", rose, buckets, jo, fg_red);
 
 var opponents = [heat, rckt, mvrk, spur, suns, pstn, cvlr, pace, mgic, knck, pole, JS, great1];
-var my_team = new team("Chicago Script-a-Bulls", rose, buckets, jo, fg_red);
+var my_team = pole;
 
 console.log("*****  JavaScript Basketball League  *****");
 
 my_team.printRoster();
-
+var opp = 0;
 var team_injury = false;
 for (var sea=0; sea<6; sea++){
 	playGame(my_team, opponents[sea]);
