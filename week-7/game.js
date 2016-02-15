@@ -89,7 +89,6 @@ var playGame = function(team1, team2){
 	console.log(team2.color, team1.games + 1, "\bth game vs.", team2.name);
 	console.log(team1.color, team1.g.j_no, team1.g.name, "scores", pts[0], "points &", team1.f.j_no, team1.f.name, "scores", pts[1], "points. ");
 	console.log(team2.color, team2.g.j_no, team2.g.name, "scores", pts[2], "points &", team2.f.j_no, team2.f.name, "scores", pts[3], "points. ");
-	//console.log(white, "\b------------------------------------------------");
 	p_pts = pts[0] + pts[1];
  	o_pts = pts[2] + pts[3];
  	ovr = "\b";
@@ -235,7 +234,8 @@ var great1 = new team("All-Time Greats (597 wins 0 losses)", bird, dr_j, k_pass,
 var bulls = new team("Chicago Script-a-Bulls", rose, buckets, jo, fg_red);
 
 var opponents = [heat, rckt, mvrk, spur, suns, pstn, cvlr, pace, mgic, knck, pole, JS, great1];
-var my_team = pole;
+/********** to change your team simply replace "bulls" with one of the above teams *********/
+var my_team = bulls;
 
 console.log("*****  JavaScript Basketball League  *****");
 
@@ -269,10 +269,8 @@ for (var sea=0; sea<6; sea++){
 // 		break;
 // }
 
-//injury(my_team);
 // Features to Implement
-// player returns from injury
-// Mid-game subsitution
+// -- Mid-game subsitution
 if (my_team.l == 0) {
 	console.log(bg_white, "Here comes the dream championship. It's just you versus the", opponents[opponents.length-1].name, bg_black);
 	var meBool = playGame(my_team, opponents[opponents.length-1]);
@@ -284,13 +282,25 @@ else if (my_team.w >= 5) {
 else {
 	console.log(bg_yellow,"You had a good season but you did not make the playoffs", bg_black);
 }
-// Refactored Code
 // Reflection
-//
-//
-//
-//
-//
-//
-//
-//
+/*
+What was the most difficult part of this challenge?
+
+> It was tough to conceptualize a "game" using JavaScript and Node.js as there wasn't a simple way to 
+  introduce interactivity. However, I know that once I move the game to a browser I can make it 
+  interactive, so I just focused on getting the logic that I wanted. 
+
+What did you learn about creating objects and functions that interact with one another?
+
+> I applied these concepts to a real world model, a Player class and Team class. Having a real, tangible
+  example helps clarify programming theory.
+
+Did you learn about any new built-in methods you could use in your refactored solution? If so, what were they and how do they work?
+
+> Just random and floor from the Math class
+
+How can you access and manipulate properties of objects?
+
+> You can create functions to do this or simply use dot notation
+
+*/
