@@ -1,11 +1,19 @@
 sqlite> SELECT * from states;
+
 sqlite> SELECT * from regions;
+
 sqlite> SELECT state_name, population FROM states;
+
 sqlite> SELECT state_name, population FROM states;
+
 sqlite> SELECT state_name FROM states WHERE region_id = 7;
+
 sqlite> SELECT state_name, population_density FROM states WHERE population_density > 50 ORDER BY population_density ASC;
+
 sqlite> SELECT state_name FROM states WHERE population > 1000000 AND population < 1500000;
+
 sqlite> SELECT region_name FROM regions WHERE region_name LIKE '%Central%';
+
 sqlite> SELECT regions.region_name, states.state_name FROM regions
    ...> INNER JOIN states
    ...> ON states.region_id=regions.id
