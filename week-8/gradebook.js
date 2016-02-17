@@ -105,15 +105,16 @@ var average = function(arr){
 
 // __________________________________________
 // Reflect
+/*
+What did you learn about adding functions to objects?
+How did you iterate over nested arrays in JavaScript?
+Were there any new methods you were able to incorporate? If so, what were they and how did they work?
 
 
 
 
 
-
-
-
-
+*/
 // __________________________________________
 // Test Code:  Do not alter code below this line.
 
