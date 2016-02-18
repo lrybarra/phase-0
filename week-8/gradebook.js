@@ -2,8 +2,8 @@
 Gradebook from Names and Scores
 
 I worked on this challenge with: Kevin Sullivan
-                                 Luis Ybarra
-This challenge took me [#] hours.
+                                 
+This challenge took me 2 hours.
 
 You will work with the following two variables.  The first, students, holds the names of four students.
 The second, scores, holds groups of test scores.  The relative positions of elements within the two
@@ -107,13 +107,16 @@ var average = function(arr){
 // Reflect
 /*
 What did you learn about adding functions to objects?
+
+> The proper syntax. In JavaScript, a function is an attribute of an object and it is simple to add one.
+
 How did you iterate over nested arrays in JavaScript?
+
+> Using a simple for loop
+
 Were there any new methods you were able to incorporate? If so, what were they and how did they work?
 
-
-
-
-
+> No, not this time.
 */
 // __________________________________________
 // Test Code:  Do not alter code below this line.
