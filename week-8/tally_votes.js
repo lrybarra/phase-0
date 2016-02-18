@@ -1,8 +1,8 @@
 // Tally Votes in JavaScript Pairing Challenge.
 
 // I worked on this challenge with: Colette Pitamba
-//                                  Luis Ybarra
-// This challenge took me [#] hours.
+//                   
+// This challenge took me 3 hours.
 
 // These are the votes cast by each student. Do not alter these objects here.
 
@@ -57,7 +57,6 @@ voteCount would be ...
 
 */
 
-
 /* Once the votes have been tallied, assign each officer position the name of the
 student who received the most votes. */
 var officers = {
@@ -75,8 +74,7 @@ property to VoteCouont property of president.
 */
 
 // __________________________________________
-// Initial Solution
-var i = 0;
+// Solution
 for(var obj in votes){
   if (voteCount.president[votes[obj].president] == null){
     voteCount.president[votes[obj].president] = 1;
@@ -134,40 +132,27 @@ for(var obj in voteCount) {
         tre = voteCount[obj][name];
         officers.treasurer = name;
       }
-     //console.log(voteCount[prop][name]);
    }
-
-    // console.log(voteCount[prop][name]);
-  // console.log(prop);
-  // console.log(name);
 }
-
 console.log(officers);
-/*
-console.log(voteCount.president["Louise"]);
-console.log(voteCount.vicePresident["Hermann"]);
-console.log(voteCount.secretary["Fred"]);
-console.log(voteCount.treasurer["Ivy"]);
-*/
-// __________________________________________
-// Refactored Solution
-
-
-
-
-
-
 // __________________________________________
 // Reflection
+/*
+What did you learn about iterating over nested objects in JavaScript?
 
+> The syntax
 
+Were you able to find useful methods to help you with this?
 
+> No
 
+What concepts were solidified in the process of working through this challenge?
 
+> Working with nested objects, peer pairing.
 
+*/
 // __________________________________________
 // Test Code:  Do not alter code below this line.
-
 
 function assert(test, message, test_number) {
   if (!test) {
