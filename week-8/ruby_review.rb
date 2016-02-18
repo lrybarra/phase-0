@@ -183,8 +183,13 @@ first = [['x', 44, 71, 8, 88],
         ['x', 85, 97, 89, 57],
         ['x', 31, 96, 68, 51],
         ['x', 70, 54, 80, 83]]
+non = [[47, 44, 71, 8, 88],
+        ['x', 69, 75, 65, 73],
+        ['x', 85, 97, 89, 57],
+        ['x', 31, 96, 68, 51],
+        ['x', 70, 54, 80, 83]]
 my_bingo = BingoScorer.new()
-me_bool = my_bingo.checkBoard?(left_to_right)
+me_bool = my_bingo.checkBoard?(non)
 puts me_bool
 # sample boards
 
