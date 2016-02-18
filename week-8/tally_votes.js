@@ -1,9 +1,12 @@
 // Tally Votes in JavaScript Pairing Challenge.
 
-// I worked on this challenge with:
+// I worked on this challenge with: Colette Pitamba
+//                                  Luis Ybarra
 // This challenge took me [#] hours.
 
 // These are the votes cast by each student. Do not alter these objects here.
+
+// Voter "object" -- Inside voter object we have properties: pres, vp, sec, treas. The values of these properties are "Bob", "Devin", etc.
 var votes = {
   "Alex": { president: "Bob", vicePresident: "Devin", secretary: "Gail", treasurer: "Kerry" },
   "Bob": { president: "Mary", vicePresident: "Hermann", secretary: "Fred", treasurer: "Ivy" },
@@ -35,7 +38,7 @@ var votes = {
 
 // Tally the votes in voteCount.
 var voteCount = {
-  president: {},
+  president: {},  // "Bob": null // : 1 // : ++ 
   vicePresident: {},
   secretary: {},
   treasurer: {}
@@ -66,16 +69,86 @@ var officers = {
 
 // Pseudocode
 
+/*
+Loop through votes object; assign value of president 
+property to VoteCouont property of president.
+*/
 
 // __________________________________________
 // Initial Solution
+var i = 0;
+for(var obj in votes){
+  if (voteCount.president[votes[obj].president] == null){
+    voteCount.president[votes[obj].president] = 1;
+  }
+  else {
+    voteCount.president[votes[obj].president] += 1;
+  }
+  if (voteCount.vicePresident[votes[obj].vicePresident] == null){
+    voteCount.vicePresident[votes[obj].vicePresident] = 1;
+  }
+  else {
+    voteCount.vicePresident[votes[obj].vicePresident] += 1;
+  }
+  if (voteCount.secretary[votes[obj].secretary] == null){
+    voteCount.secretary[votes[obj].secretary] = 1;
+  }
+  else {
+    voteCount.secretary[votes[obj].secretary] += 1;
+  }
+  if (voteCount.treasurer[votes[obj].treasurer] == null){
+    voteCount.treasurer[votes[obj].treasurer] = 1;
+  }
+  else {
+    voteCount.treasurer[votes[obj].treasurer] += 1;
+  }
+}
 
+var pres = 0;
+var vp = 0;
+var sec = 0;
+var tre = 0;
+// officers.president = 
+for(var obj in voteCount) {
+  for(var name in voteCount[obj]) {
+    if (obj == "president") {
+      if (voteCount[obj][name] > pres) {
+        pres = voteCount[obj][name];
+        officers.president = name;
+      }
+    }
+    if (obj == "vicePresident") {
+      if (voteCount[obj][name] > vp) {
+        vp = voteCount[obj][name];
+        officers.vicePresident = name;
+      }
+    }
+    if (obj == "secretary") {
+        if (voteCount[obj][name] > sec) {
+        sec = voteCount[obj][name];
+        officers.secretary = name;
+      }
+    }
+    if (obj == "treasurer")
+      if (voteCount[obj][name] > tre) {
+        tre = voteCount[obj][name];
+        officers.treasurer = name;
+      }
+     //console.log(voteCount[prop][name]);
+   }
 
+    // console.log(voteCount[prop][name]);
+  // console.log(prop);
+  // console.log(name);
+}
 
-
-
-
-
+console.log(officers);
+/*
+console.log(voteCount.president["Louise"]);
+console.log(voteCount.vicePresident["Hermann"]);
+console.log(voteCount.secretary["Fred"]);
+console.log(voteCount.treasurer["Ivy"]);
+*/
 // __________________________________________
 // Refactored Solution
 
