@@ -64,33 +64,35 @@ class BingoScorer
   	  return true
    	end
 
-   	if (x_di_l == 1) # [1][1] [2][2] [3][3] [4][4]
+   	if (x_di_r == 1) # [1][1] [2][2] [3][3] [4][4]
    	  for r in 0..4
    	  	if (bingoBoard[r][r] == 'x')
-   	  	  x_di_l += 1
+   	  	  
+   	  	  x_di_r += 1
    	  	end
    	  end
    	end
 
-   	if (x_di_l == 5)
+   	if (x_di_r == 6)
       return true
    	end
 
-   	if (x_di_r == 1) # [0][4] [1][3] [2][2] [3][1] [4][0]
+   	if (x_di_l == 1) # [0][4] [1][3] [2][2] [3][1] [4][0]
    	  dec = 4
    	  for r in 0..4
    	  	if (bingoBoard[r][dec] == 'x')
-   	  	  x_di_r += 1
+   	  	  x_di_l += 1
    	  	end
    	  	dec -= 1
    	  end
    	end
 
-   	if (x_di_r == 5)
+   	if (x_di_l == 6)
    	  return true
    	end
   	
   	if (x_ve_c == 1)
+  		x_ve_c = 0
 	  	for e in 0..4 
 	  	  if (x_vert[e] == true)
 	  	    for r in 0..4
@@ -101,7 +103,7 @@ class BingoScorer
 	  	    if (x_ve_c == 5)
 	  	      return true
 	  	    else
-	  	      x_ve_c = 1
+	  	      x_ve_c = 0
 	  	    end
 	  	  end
 	  	end
@@ -182,7 +184,7 @@ first = [['x', 44, 71, 8, 88],
         ['x', 31, 96, 68, 51],
         ['x', 70, 54, 80, 83]]
 my_bingo = BingoScorer.new()
-me_bool = my_bingo.checkBoard?(horizontal)
+me_bool = my_bingo.checkBoard?(left_to_right)
 puts me_bool
 # sample boards
 
