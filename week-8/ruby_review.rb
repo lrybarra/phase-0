@@ -128,21 +128,6 @@ class BingoScorer
     end
 
     return false
-
-  	# bingoBoard.each do |r|
-  	# 	for e in 0..4
-  	# 		if (r[e] == 'x')
-  	# 		  if (bingoBoard[0] == r && e == 0)
-  	# 		  	for i in 0..4
-  	# 		  	  if (r[i] == 'x')
-  	# 		  	    x_counter += 1	
-  	# 		  	  end
-  	# 		  	end
-
-  	# 		  end
-  	# 		end
-  	# 	end
-  	# end
   	puts "BINGO!"
   	puts "YOU GET NOTHING! YOU LOSE! GOOD DAY, SIR/MADAM!"
   end
@@ -190,18 +175,28 @@ non = [[47, 44, 71, 8, 88],
         ['x', 70, 54, 80, 83]]
 my_bingo = BingoScorer.new()
 me_bool = my_bingo.checkBoard?(non)
-puts me_bool
-# sample boards
-
-
-# Reflection
+if (me_bool)
+  puts "BINGO!"
+else
+  puts "YOU GET NOTHING! YOU LOSE! GOOD DAY, SIR/MADAM!"
+end
 
 =begin  
 
 ######### Reflection #########
 
 What concepts did you review or learn in this challenge?
+
+> Class creation, calling methods, printing, Ruby style, initialize methods
+
 What is still confusing to you about Ruby?
+
+> Nada. Zip. Zero. Zilch. There is much more to learn and I am certainly looking forward to it, but
+  nothing is confusing. 
+
 What are you going to study to get more prepared for Phase 1?
+
+> Going to read up more on Ruby and find more resources for HTML & CSS. Perhaps a few articles on peer 
+programming.
 
 =end
